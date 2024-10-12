@@ -18,13 +18,13 @@ jobs:
     steps:
     # Step 1 Checkout Repository
     - name: checkout repo
-      uses: action/checkout@v3
+      uses: actions/checkout@v3
 
     - name: create branch
       run: |
-           BRANCH_NAME="${{ github.event.inputs.branch_name }}"  
-           TEST_BRANCH_NAME="${BRANCH_NAME}_TEST"
+        BRANCH_NAME="${{ github.event.inputs.branch_name }}"  
+        TEST_BRANCH_NAME="${BRANCH_NAME}_TEST"
           
-          # Create new branch and push it to GitHub
-          git checkout -b "$TEST_BRANCH_NAME"
-          git push origin "$TEST_BRANCH_NAME"
+        # Create new branch and push it to GitHub
+        git checkout -b "$TEST_BRANCH_NAME"
+        git push origin "$TEST_BRANCH_NAME"
