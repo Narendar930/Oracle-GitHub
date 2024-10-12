@@ -18,5 +18,5 @@ jobs:
    - name: get current branch
      id: get_branch
      run: |
-       echo "CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
+       echo "CURRENT_BRANCH= ${{ github.ref }}"
        echo "Current branch is $CURRENT_BRANCH"
