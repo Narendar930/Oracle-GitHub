@@ -31,6 +31,7 @@ jobs:
 
         # Create a new branch
         git checkout -b "$TEST_BRANCH_NAME"
+        git remote -v
 
         # Push the new branch to the repository using the PAT
         git push https://$PAT_TOKEN@github.com/${{ github.repository }} "$TEST_BRANCH_NAME"
