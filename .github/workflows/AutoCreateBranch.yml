@@ -22,7 +22,7 @@ jobs:
 
     - name: create branch
       env:
-        PAT_TOKEN: ${{ secrets.TOKEN_NAME }}  # Use the PAT from the secrets
+        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}  # Use the PAT from the secrets
       run: |
         BRANCH_NAME="Kapture"  
         TEST_BRANCH_NAME="${BRANCH_NAME}_test"
