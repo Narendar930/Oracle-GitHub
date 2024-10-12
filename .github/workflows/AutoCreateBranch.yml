@@ -29,4 +29,4 @@ jobs:
           
         # Create new branch and push it to GitHub
         git checkout -b "$TEST_BRANCH_NAME"
-        git push Github "$TEST_BRANCH_NAME"
+        git push Oracle-Github "$TEST_BRANCH_NAME"
