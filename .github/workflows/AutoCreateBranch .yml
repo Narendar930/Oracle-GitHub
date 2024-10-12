@@ -1,0 +1,20 @@
+
+name: Duplicate Branch For Test Instance
+
+# This will give manual run option
+on: 
+ workflow_dispatch:
+
+jobs:
+  create_an_test_branch:
+   runs-on: ubuntu-latest
+
+   steps:
+   # Step 1 - checkout repository
+   - name: checkout repository
+     uses: actions/checkout@v3
+
+   # Step 2 - Get the current branch
+   - name: get current branch
+     id: get_branch
+     run: echo "CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)" >> $GITHUB_ENV
