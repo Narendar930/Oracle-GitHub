@@ -22,8 +22,8 @@ jobs:
 
     - name: create branch
       run: |
-        BRANCH_NAME="${{ github.event.inputs.branch_name }}"  
-        TEST_BRANCH_NAME="${BRANCH_NAME}_TEST"
+        BRANCH_NAME="Kapture"  
+        TEST_BRANCH_NAME="${BRANCH_NAME}_test"
           
         # Create new branch and push it to GitHub
         git checkout -b "$TEST_BRANCH_NAME"
