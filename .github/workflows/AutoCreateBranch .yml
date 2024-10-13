@@ -32,3 +32,18 @@ jobs:
      id: create_new_branch
      run: |
        echo "Before Creating New branch is : $NEW_BRANCH"
+
+       git checkout -b "$NEW_BRANCH"
+       git add .
+       git commit -m "New Branch Created"
+       echo "New Branch Created Successfully"
+       
+   - name: merge curr branch to new branch
+     id: merge_branch
+     run: |
+       echo "Before Merging Branches"
+       CURR_BRANCH="${{ github.event.inputs.branch_name }}"
+       git branch
+       git checkout $CURR_BRANCH
+       git branch
+       
