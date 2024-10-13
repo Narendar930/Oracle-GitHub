@@ -4,6 +4,10 @@ name: Duplicate Branch For Test Instance
 # This will give manual run option
 on: 
  workflow_dispatch:
+   inputs:
+     branch_name:
+       description: 'Branch to create a duplicate'
+       required: true
 
 jobs:
   create_an_test_branch:
@@ -18,4 +22,5 @@ jobs:
    - name: get current branch
      id: get_branch
      run: |
-       echo "CURRENT_BRANCH= ${{ github.ref }}"
+       CURRENT_BRANCH= ${{ github.event.inputs.branch_name }}
+       echo "Current is ${{CURRENT_BRANCH}}
