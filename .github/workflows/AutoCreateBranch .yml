@@ -33,6 +33,9 @@ jobs:
      run: |
        echo "Before Creating New branch is : $NEW_BRANCH"
 
+       git config --global user.email "naren312suren@gmail.com"
+       git config --global user.name "Narendar V"
+       
        git checkout -b "$NEW_BRANCH"
        git add .
        git commit -m "New Branch Created"
