@@ -23,7 +23,7 @@ jobs:
      run: |
        CURRENT_BRANCH="${{ github.event.inputs.branch_name }}"
        echo "Current branch is: $CURRENT_BRANCH"
-       NEW_BRANCH="${CURRENT_BRANCH}_test"
+       NEW_BRANCH="${CURRENT_BRANCH}_TEST"
        echo "New Branch is: $NEW_BRANCH"
        echo "CURRENT_BRANCH=$CURRENT_BRANCH" >> $GITHUB_ENV
        echo "NEW_BRANCH=$NEW_BRANCH" >> $GITHUB_ENV
