@@ -1,4 +1,3 @@
-
 name: Duplicate Branch For Test Instance
 
 # This will give manual run option
@@ -44,6 +43,11 @@ jobs:
      id: merge_branch
      run: |
        echo "Before Merging Branches"
-    #git branch
-    #git checkout "$CURRENT_BRANCH"
+       git merge "$NEW_BRANCH"
+
+   - name: push new branch
+     id: push_new_branch
+     run: |
+       echo "Before Pushing the New Branch"
+       git status
        
