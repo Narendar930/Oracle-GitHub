@@ -1,0 +1,60 @@
+--------------------------------------------------------------------------------
+  -- Version  Date       Performer       Comments
+  ----------  --------   --------------  ---------------------------------------
+  -- 1.0      26-Sep-24  Narendar V      -- Initial Build
+--------------------------------------------------------------------------------
+create or replace view xx4i_attachment_dtl_v (
+  row_id,
+  attachment_id, 
+  pk1_id, 
+  pk1_value, 
+  entity_type, 
+  file_name, 
+  description, 
+  file_path, 
+  file_url, 
+  file_category_id, 
+  file_category,
+  file_categ_name,
+  file_comment, 
+  file_type, 
+  attribute_category,
+  attribute1, 
+  attribute2, 
+  attribute3, 
+  attribute4, 
+  attribute5, 
+  created_by, 
+  creation_date, 
+  last_updated_by, 
+  last_update_date, 
+  last_update_login) as
+select att.rowid,
+       att.attachment_id, 
+       att.pk1_id, 
+       att.pk1_value, 
+       att.entity_type, 
+       att.file_name, 
+       att.DESCRIPTION, 
+       att.file_path, 
+       att.file_url, 
+       att.file_category_id,
+       fdc.name,
+       fdc.user_name,
+       att.file_comment, 
+       att.file_type, 
+       att.attribute_category, 
+       att.attribute1, 
+       att.attribute2, 
+       att.attribute3, 
+       att.attribute4, 
+       att.attribute5, 
+       att.created_by, 
+       att.creation_date, 
+       att.last_updated_by, 
+       att.last_update_date, 
+       att.last_update_login
+from   xx4i_attachments  att,
+       fnd_document_categories_tl fdc
+where  att.file_category_id = fdc.category_id
+and    language =  USERENV('LANG');
