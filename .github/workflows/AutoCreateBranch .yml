@@ -26,6 +26,7 @@ jobs:
        echo "Current branch is: $CURRENT_BRANCH"
        NEW_BRANCH="${CURRENT_BRANCH}_test"
        echo "New Branch is: $NEW_BRANCH"
+       echo "NEW_BRANCH=$NEW_BRANCH" >> $GITHUB_ENV
 
    - name: create a new branch 
      id: create_new_branch
