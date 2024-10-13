@@ -24,3 +24,10 @@ jobs:
      run: |
        CURRENT_BRANCH="${{ github.event.inputs.branch_name }}"
        echo "Current branch is: $CURRENT_BRANCH"
+       NEW_BRANCH="${CURRENT_BRANCH}_test"
+       echo "New Branch is: $NEW_BRANCH"
+
+   - name: create a new branch 
+     id: create_new_branch
+     run: |
+       echo "Before Creating New branch is : $NEW_BRANCH"
