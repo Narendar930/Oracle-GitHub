@@ -22,5 +22,5 @@ jobs:
    - name: get current branch
      id: get_branch
      run: |
-       CURRENT_BRANCH= ${{ github.event.inputs.branch_name }}
-       echo "Current is ${{CURRENT_BRANCH}}
+       CURRENT_BRANCH="${{ github.event.inputs.branch_name }}"
+       echo "Current is ${{CURRENT_BRANCH}}"
