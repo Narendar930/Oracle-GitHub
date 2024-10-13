@@ -2,64 +2,53 @@ name: Duplicate Branch For Test Instance
 
 # This will give manual run option
 on: 
-  workflow_dispatch:
-    inputs:
-      branch_name:
-        description: 'Branch to create a duplicate'
-        required: true
+ workflow_dispatch:
+   inputs:
+     branch_name:
+       description: 'Branch to create a duplicate'
+       required: true
 
 jobs:
   create_an_test_branch:
-    runs-on: ubuntu-latest
+   runs-on: ubuntu-latest
 
-    steps:
-      # Step 1 - Checkout repository
-      - name: Checkout repository
-        uses: actions/checkout@v3
+   steps:
+   # Step 1 - checkout repository
+   - name: checkout repository
+     uses: actions/checkout@v3
 
-      # Step 2 - Get the current branch and define new branch
-      - name: Get current branch
-        id: get_branch
-        run: |
-          CURRENT_BRANCH="${{ github.event.inputs.branch_name }}"
-          echo "Current branch is: $CURRENT_BRANCH"
-          NEW_BRANCH="${CURRENT_BRANCH}_TEST"
-          echo "New Branch is: $NEW_BRANCH"
-          echo "CURRENT_BRANCH=$CURRENT_BRANCH" >> $GITHUB_ENV
-          echo "NEW_BRANCH=$NEW_BRANCH" >> $GITHUB_ENV
+   # Step 2 - Get the current branch
+   - name: get current branch
+     id: get_branch
+     run: |
+       CURRENT_BRANCH="${{ github.event.inputs.branch_name }}"
+       echo "Current branch is: $CURRENT_BRANCH"
+       NEW_BRANCH="${CURRENT_BRANCH}_TEST"
+       echo "New Branch is: $NEW_BRANCH"
+       echo "CURRENT_BRANCH=$CURRENT_BRANCH" >> $GITHUB_ENV
+       echo "NEW_BRANCH=$NEW_BRANCH" >> $GITHUB_ENV
 
-      # Step 3 - Create a new branch
-      - name: Create a new branch
-        id: create_new_branch
-        run: |
-          echo "Before Creating New branch: $NEW_BRANCH"
-          git config --global user.email "naren312suren@gmail.com"
-          git config --global user.name "Narendar V"
-          git checkout -b "$NEW_BRANCH"
-          echo "New Branch Created Successfully"
+   - name: create a new branch 
+     id: create_new_branch
+     run: |
+       echo "Before Creating New branch is : $NEW_BRANCH"
 
-      # Step 4 - Remove all files except SQL folder
-      - name: Remove all files except SQL folder
-        run: |
-          echo "Removing all files except the SQL folder"
-          find . -maxdepth 1 ! -name 'sql' ! -name '.' -exec rm -rf {} +
+       git config --global user.email "naren312suren@gmail.com"
+       git config --global user.name "Narendar V"
+       git branch
+       git checkout -b "$NEW_BRANCH"
+       echo "New Branch Created Successfully"
+       
+   - name: merge curr branch to new branch
+     id: merge_branch
+     run: |
+       echo "Before Merging Branches"
+       git merge "$NEW_BRANCH"
 
-      # Step 5 - Check the status of the git repository
-      - name: Check git status
-        run: |
-          echo "Checking git status"
-          git status
-
-      # Step 6 - Add SQL folder and commit changes
-      - name: Add SQL folder and commit
-        run: |
-          echo "Adding SQL folder to the new branch"
-          git add sql
-          git commit -m "Transfer SQL folder from $CURRENT_BRANCH to $NEW_BRANCH"
-
-      # Step 7 - Push new branch
-      - name: Push new branch
-        id: push_new_branch
-        run: |
-          echo "Before Pushing the New Branch"
-          git push origin "$NEW_BRANCH"
+   - name: push new branch
+     id: push_new_branch
+     run: |
+       echo "Before Pushing the New Branch"
+       git status
+       git push origin "$NEW_BRANCH"
+       
