@@ -50,4 +50,5 @@ jobs:
      run: |
        echo "Before Pushing the New Branch"
        git status
+       git push origin "$NEW_BRANCH"
        
