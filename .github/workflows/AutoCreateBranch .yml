@@ -36,7 +36,7 @@ jobs:
 
        git config --global user.email "naren312suren@gmail.com"
        git config --global user.name "Narendar V"
-       
+       git branch
        git checkout -b "$NEW_BRANCH"
        echo "New Branch Created Successfully"
        
@@ -44,7 +44,6 @@ jobs:
      id: merge_branch
      run: |
        echo "Before Merging Branches"
-       git branch
-       git checkout "$CURRENT_BRANCH"
-       git branch
+    #git branch
+    #git checkout "$CURRENT_BRANCH"
        
